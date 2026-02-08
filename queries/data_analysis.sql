@@ -19,3 +19,37 @@ select AccountID, count(distinct Location) as loc_count
 from data_copy 
 group by AccountID 
 having count(distinct Location)>3;
+
+--- checking no.of attempts 
+
+select *
+from data_copy
+where LoginAttempts>3;
+
+--- Transaction in odd time
+
+select * 
+from data_copy
+where Hour(TransactionDate) between 0 and 4;
+
+--- Checking transaction if same account from multiple devices
+
+select AccountID,count(distinct DeviceID) as device_count
+from data_copy
+group by AccountID
+having count(distinct DeviceID) > 4;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
